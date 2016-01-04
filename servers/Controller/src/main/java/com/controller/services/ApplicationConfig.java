@@ -15,6 +15,7 @@ public class ApplicationConfig extends Application {
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.controller.services.HelloResource.class);
+        resources.add(com.controller.services.ImageSegmentationResource.class);
     }
 
 }

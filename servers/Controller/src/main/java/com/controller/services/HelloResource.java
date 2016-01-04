@@ -8,6 +8,7 @@ package com.controller.services;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
 
 /**
  * REST Web Service
@@ -24,7 +25,7 @@ public class HelloResource {
      * @return an instance of java.lang.String
      */
     @GET
-    @Produces("text/plain")
+    @Produces(MediaType.TEXT_PLAIN)
     public String getText() {
         return "Hello!";
     }
