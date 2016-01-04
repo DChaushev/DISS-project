@@ -9,6 +9,7 @@ public class ApplicationConfig extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new java.util.HashSet<>();
+        applyFilters(resources);
         addRestResourceClasses(resources);
         return resources;
     }
@@ -18,4 +19,7 @@ public class ApplicationConfig extends Application {
         resources.add(com.controller.services.ImageSegmentationResource.class);
     }
 
+    private void applyFilters(Set<Class<?>> resources) {
+        resources.add(com.controller.services.CORSFilter.class);
+    }
 }
