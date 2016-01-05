@@ -1,10 +1,9 @@
-package com.imagesHolder.services;
+package com.picturesHolder.services;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.picturesHolder.singleton.PicturesHolder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ws.rs.GET;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -18,19 +17,20 @@ import org.json.simple.parser.ParseException;
  *
  * @author Dimitar
  */
-@Path("picturesHolder")
+@Path("")
 public class PicturesHolderResource {
 
     private static final String ENCODED_IMAGE_KEY = "encodedImage";
     private static final String NUMBER_OF_CLUSTERS_KEY = "clusters";
+    private static final String RESULT = "result";
 
-    private final Map<String, String> picturesHolder;
+    private final PicturesHolder picturesHolder;
 
     /**
      * Creates a new instance of PicturesHolderResource
      */
     public PicturesHolderResource() {
-        picturesHolder = new HashMap<>();
+        picturesHolder = PicturesHolder.getInstance();
     }
 
     /**
@@ -40,8 +40,10 @@ public class PicturesHolderResource {
      * @param jsonString
      * @return an instance of java.lang.String
      */
-    @GET
+    @POST
+    @Path("getImage")
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response getImage(String jsonString) {
         Response response;
         try {
@@ -52,12 +54,12 @@ public class PicturesHolderResource {
 
             String key = numberOfClustersString + imageString;
 
-            if (picturesHolder.containsKey(key)) {
+            if (picturesHolder.contains(key)) {
                 JSONObject result = new JSONObject();
                 result.put(ENCODED_IMAGE_KEY, picturesHolder.get(key));
                 response = Response.ok().entity(result.toJSONString()).build();
             } else {
-                response = Response.ok().entity(null).build();
+                response = Response.noContent().build();
             }
 
         } catch (ParseException ex) {
@@ -74,7 +76,9 @@ public class PicturesHolderResource {
      * @return
      */
     @POST
+    @Path("postImage")
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response postImage(String jsonString) {
         Response response;
         try {
@@ -82,21 +86,21 @@ public class PicturesHolderResource {
 
             String imageString = (String) jsonObject.get(ENCODED_IMAGE_KEY);
             String numberOfClustersString = (String) jsonObject.get(NUMBER_OF_CLUSTERS_KEY);
+            String result = (String) jsonObject.get(RESULT);
 
             String key = numberOfClustersString + imageString;
 
-            if (!picturesHolder.containsKey(key)) {
-                picturesHolder.put(key, imageString);
-                response = Response.ok().build();
-            } else {
-                response = Response.ok().entity(null).build();
+            if (!picturesHolder.contains(key)) {
+                picturesHolder.put(key, result);
             }
+            response = Response.ok().build();
 
         } catch (ParseException ex) {
             Logger.getLogger(PicturesHolderResource.class.getName()).log(Level.SEVERE, null, ex);
 
             response = Response.serverError().build();
         }
+
         return response;
     }
 

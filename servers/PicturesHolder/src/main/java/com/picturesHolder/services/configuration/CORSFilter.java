@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.imagesHolder.services.configuration;
+package com.picturesHolder.services.configuration;
 
 import java.io.IOException;
 import javax.ws.rs.container.ContainerRequestContext;

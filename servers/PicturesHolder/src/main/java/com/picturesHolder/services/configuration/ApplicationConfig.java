@@ -1,4 +1,4 @@
-package com.imagesHolder.services.configuration;
+package com.picturesHolder.services.configuration;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -15,10 +15,10 @@ public class ApplicationConfig extends Application {
     }
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(com.imagesHolder.services.PicturesHolderResource.class);
+        resources.add(com.picturesHolder.services.PicturesHolderResource.class);
     }
 
     private void applyFilters(Set<Class<?>> resources) {
-        resources.add(com.imagesHolder.services.configuration.CORSFilter.class);
+        resources.add(com.picturesHolder.services.configuration.CORSFilter.class);
     }
 }
