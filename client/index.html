@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-    <link rel="stylesheet" href="styles/template.css">
+    <link rel="stylesheet" href="styles/style.css">
 
 </head>
 <body>
@@ -27,11 +27,23 @@
 <div class="container">
 
     <div class="template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a
-            mostly barebones HTML document.</p>
-        <input type="file" id="filechooser">
-        <button id="sendPicture">Segment</button>
+        <h1>Make your images less colourful</h1>
+        <p class="lead">Ever wonder how would an image look if it has less colors, but clustered the right way? Choose
+            your image, the number of colors and check it out.</p>
+    </div>
+
+    <div id="images">
+        <img id="originalImage" class="col-md-6"/>
+        <img id="segmentedImage" class="col-md-6"/>
+        <img id="loadingImage" src="images/loading.gif"/>
+    </div>
+
+    <div id="buttons">
+        <label for="fileChooser">Choose an image to display</label><input type="file" id="fileChooser"
+                                                                          accept="image/jpeg">
+        <label for="numberOfClusters">Choose number of clusters &nbsp;</label><input type="number" id="numberOfClusters"
+                                                                                     value="5"/>
+        <button id="segmentButton">Segment</button>
     </div>
 
 </div>
@@ -39,7 +51,8 @@
 <!--Scripts-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="src/httpOperator.js"></script>
+<script src="src/enumerations.js"></script>
+<script src="src/functions.js"></script>
 
 </body>
 </html>

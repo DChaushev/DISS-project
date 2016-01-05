@@ -1,0 +1,32 @@
+body {
+    padding-top: 50px;
+}
+.template {
+    padding: 40px 15px 15px;
+    text-align: center;
+}
+
+#originalImage{
+    float: left;
+    width: 50%;
+    height: 50%;
+}
+#segmentedImage{
+    float: right;
+    width: 50%;
+    height: 50%;
+}
+
+#buttons{
+    text-align: center;
+}
+
+#loadingImage{
+    display: none;
+    left:50%;
+    top:45%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position:absolute;
+}

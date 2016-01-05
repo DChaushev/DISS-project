@@ -5,7 +5,7 @@ sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 if (!hasProperty('mainClass')) {
-    ext.mainClass = 'com.controller.services.ApplicationConfig'
+    ext.mainClass = 'com.controller.services.configuration.ApplicationConfig'
 }
 
 repositories {
@@ -23,6 +23,15 @@ dependencies {
     
     //Apache Commons IO
     compile 'commons-io:commons-io:2.4'
+    
+    //Simple JSON
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
 }
 
-//TODO: after build, copy war to server...
+//After build, copy the war to server...
+build.doLast{
+    copy {
+        from war.archivePath
+        into "C:/apache-tomcat-9.0.0.M1/webapps"
+    }
+}

@@ -1,4 +1,4 @@
-package com.controller.services;
+package com.controller.services.configuration;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -20,6 +20,6 @@ public class ApplicationConfig extends Application {
     }
 
     private void applyFilters(Set<Class<?>> resources) {
-        resources.add(com.controller.services.CORSFilter.class);
+        resources.add(com.controller.services.configuration.CORSFilter.class);
     }
 }
