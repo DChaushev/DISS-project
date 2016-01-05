@@ -14,3 +14,6 @@ hs_err_pid*
 /servers/Controller/build/
 /servers/Controller/nbproject/private/
 /servers/Controller/dist/
+/servers/PicturesHolder/.nb-gradle/
+/servers/PicturesHolder/build/
+/servers/build/

@@ -5,7 +5,7 @@
     fileChooser.addEventListener(EVENTS.CHANGE, handleFileSelect, false);
 })();
 
-function sendImage(file) {
+function sendRequest(file) {
     var reader = new FileReader();
 
     reader.onload = function () {
@@ -51,7 +51,8 @@ function hideLoadingImage() {
 }
 
 function displayResult(encodedImage) {
-    document.getElementById(SEGMENTED_IMAGE_ID).setAttribute('src', 'data:image/png;base64,' + encodedImage);
+    encodedImage = 'data:image/jpeg;base64,' + encodedImage;
+    changeImageOf(SEGMENTED_IMAGE_ID, encodedImage);
 }
 
 function handleFileSelect(event) {
@@ -76,7 +77,7 @@ function handleFileSelect(event) {
 
     var segmentButton = document.getElementById(SEGMENT_BUTTON_ID);
     segmentButton.addEventListener(EVENTS.CLICK, function () {
-        sendImage(file);
+        sendRequest(file);
     }, false);
 }
 
