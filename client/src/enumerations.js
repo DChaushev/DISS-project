@@ -8,6 +8,8 @@
 
     SEGMENT_BUTTON_ID = 'segmentButton';
 
+    SAVE_TO_DRIVE = "saveToDrive";
+
     FILE_CHOOSER_ID = 'fileChooser';
     NUMBER_OF_CLUSTERS_INPUT_ID = 'numberOfClusters';
 

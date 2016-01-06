@@ -53,6 +53,21 @@ function hideLoadingImage() {
 function displayResult(encodedImage) {
     encodedImage = 'data:image/jpeg;base64,' + encodedImage;
     changeImageOf(SEGMENTED_IMAGE_ID, encodedImage);
+
+    $("#buttons a").remove();
+
+    var options = {
+        success: function () {
+            console.log("Success! Files saved to your Dropbox.");
+        },
+
+        error: function (errorMessage) {
+            console.log(errorMessage);
+        }
+    };
+    var button = Dropbox.createSaveButton(encodedImage, "myPhoto.jpg", options);
+    document.getElementById("buttons").appendChild(button);
+
 }
 
 function handleFileSelect(event) {
